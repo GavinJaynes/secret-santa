@@ -21,6 +21,7 @@ export function ParticipantForm({ onAdd }: ParticipantFormProps) {
       id: crypto.randomUUID(),
       name: name.trim(),
       email: email.trim(),
+      giftValue: 0,
     });
 
     setName("");

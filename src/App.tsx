@@ -8,11 +8,13 @@ import { ChristmasDecorations } from "@/components/ChristmasDecorations";
 import { matchParticipants } from "@/utils/secretSantaMatch";
 import { sendSecretSantaEmail } from "@/services/emailService";
 import { Button } from "@/components/ui/button";
+import { GiftValueSetting } from "@/components/GiftValueSettings";
 
 function App() {
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isAssigning, setIsAssigning] = useState(false);
+  const [globalGiftValue, setGlobalGiftValue] = useState("20");
 
   const handleAddParticipant = (participant: Participant) => {
     setParticipants([...participants, participant]);
@@ -74,6 +76,11 @@ function App() {
           {error && (
             <ErrorMessage message={error} onDismiss={() => setError(null)} />
           )}
+
+          <GiftValueSetting
+            value={globalGiftValue}
+            onChange={setGlobalGiftValue}
+          />
 
           <ParticipantForm onAdd={handleAddParticipant} />
 
